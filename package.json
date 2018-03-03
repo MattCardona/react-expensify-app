@@ -18,6 +18,7 @@
     "moment": "^2.19.2",
     "node-sass": "^4.7.2",
     "normalize.css": "^7.0.0",
+    "numeral": "^2.0.6",
     "raf": "^3.4.0",
     "react": "^16.0.0",
     "react-addons-shallow-compare": "^15.6.2",
@@ -44,7 +45,7 @@
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
-    "test": "jest --config=jest.config.json",
+    "test": "jest --config=jest.config.json --watchAll",
     "start": "node server/server.js",
     "heroku-postbuild": "npm run build:prod"
   },

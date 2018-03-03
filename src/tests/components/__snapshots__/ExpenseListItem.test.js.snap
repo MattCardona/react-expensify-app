@@ -11,12 +11,10 @@ exports[`should render ExpenseListItem correctly 1`] = `
     </h3>
   </Link>
   <p>
-    This expense is: 
-    Rent
-    . The current balance is: 
-    109500
-    . and it was created on: 
-    -345600000
+    balance: 
+    $1,095.00
+    , created at: 
+    December 27th, 1969
   </p>
 </div>
 `;
