@@ -48,7 +48,7 @@ test("should sort by date", () => {
   expect(result).toEqual([expenses[2], expenses[0], expenses[1]]);
 });
 
-test("should sory by amount", () => {
+test("should sort by amount", () => {
   const filters = {
     text: '',
     sortBy: 'amount',
