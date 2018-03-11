@@ -21,6 +21,8 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
         memo.push(expense);
         return memo;
       }, []);
+    case 'SET_EXPENSES':
+      return action.expenses;
     default:
       return state;
   }
