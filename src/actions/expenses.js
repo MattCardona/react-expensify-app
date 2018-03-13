@@ -27,6 +27,18 @@ const removeExpense = ({id} = {}) => ({
   id
 });
 
+const startRemoveExpense = ({id} = {}) => {
+  console.log(`Hey this id: id from actions ${id.id}`);
+  return (dispatch) => {
+    return database.ref(`expenses/${id}`).remove().then(() => {
+      console.log('Data was removed');
+      dispatch(removeExpense({id}));
+    }).catch((e) => {
+      console.log(`Their was a error: ${e}`);
+    });
+  }
+};
+
 // EDIT_EXPENSE
 const editExpense = (id, updates) => ({
   type: 'EDIT_EXPENSE',
@@ -57,4 +69,4 @@ const startSetExpenses = () => {
   }
 };
 
-export {addExpense, startAddExpense, removeExpense, editExpense, setExpenses, startSetExpenses};
+export {addExpense, startAddExpense, removeExpense, startRemoveExpense, editExpense, setExpenses, startSetExpenses};
