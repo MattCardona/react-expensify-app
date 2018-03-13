@@ -28,13 +28,9 @@ const removeExpense = ({id} = {}) => ({
 });
 
 const startRemoveExpense = ({id} = {}) => {
-  console.log(`Hey this id: id from actions ${id.id}`);
   return (dispatch) => {
     return database.ref(`expenses/${id}`).remove().then(() => {
-      console.log('Data was removed');
       dispatch(removeExpense({id}));
-    }).catch((e) => {
-      console.log(`Their was a error: ${e}`);
     });
   }
 };
