@@ -12,7 +12,7 @@ beforeEach(() => {
   wrapper = shallow(<EditExpensePage expense={expenses[0]} startEditExpense={startEditExpense} startRemoveExpense={startRemoveExpense} history={history}/>);
 });
 
-test("should render the EditExpensePagePage", () => {
+test("should render the EditExpensePage", () => {
   expect(wrapper).toMatchSnapshot();
 });
 
