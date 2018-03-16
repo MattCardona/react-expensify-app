@@ -9,6 +9,7 @@ import {ConnectedEditExpensePage} from '../components/EditExpensePage.js';
 import {HelpPage} from '../components/HelpPage.js';
 import {NotFoundPage} from '../components/NotFoundPage.js';
 import PrivateRoute from './PrivateRoute.js';
+import PublicRoute from './PublicRoute.js';
 
 const history = createHistory();
 
@@ -17,7 +18,7 @@ const AppRouter = () => {
   <Router history={history}>
     <div>
       <Switch>
-        <Route path="/" component={LoginPage} exact={true}/>
+        <PublicRoute path="/" component={LoginPage} exact={true}/>
         <PrivateRoute path="/dashboard" component={ExpenseDashBoardPage} />
         <PrivateRoute path="/create" component={ConnectedAddExpensePage} />
         <PrivateRoute path="/edit/:id" component={ConnectedEditExpensePage} />
