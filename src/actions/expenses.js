@@ -69,8 +69,8 @@ const startSetExpenses = () => {
           id: child.key,
           ...child.val()
         });
-      dispatch(setExpenses(dbExpenses));
       });
+      dispatch(setExpenses(dbExpenses));
     });
 
   }
