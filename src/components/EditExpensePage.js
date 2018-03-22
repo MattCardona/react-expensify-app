@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {ExpenseForm} from './ExpenseForm.js';
 import {editExpense, startEditExpense, removeExpense, startRemoveExpense} from '../actions/expenses.js';
-
+import {setFlag, unSetFlag} from '../actions/modal.js';
+import Modal from 'react-modal';
 
 
 class EditExpensePage extends React.Component {
@@ -11,8 +12,17 @@ class EditExpensePage extends React.Component {
     this.props.history.push('/');
   };
   onClickRemove = () => {
+    this.props.setFlag();
+    // this.props.startRemoveExpense({id: this.props.expense.id});
+    // this.props.history.push('/');
+  };
+  onClickModal = () => {
+    this.props.unSetFlag();
     this.props.startRemoveExpense({id: this.props.expense.id});
     this.props.history.push('/');
+  };
+  onClickKeep = () => {
+    this.props.unSetFlag();
   };
   render() {
     return (
@@ -24,7 +34,18 @@ class EditExpensePage extends React.Component {
         </div>
         <div className="content-container">
           <ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit}/>
-          <button className="button button--secondary" onClick={this.onClickRemove}>Remove</button>
+          <Modal
+          ariaHideApp={false}
+          isOpen={this.props.modal}
+          contentLabel="Selected Option"
+          closeTimeoutMS={200}
+          className="modal"
+          >
+          <h1 className="modal__title">Are you sure?</h1>
+          <button className="button button--secondary" onClick={this.onClickModal}>Delete</button>
+          <button className="button button--keep" onClick={this.onClickKeep}>Keep</button>
+          </Modal>
+            <button className="button button--secondary" onClick={this.onClickRemove}>Remove</button>
         </div>
       </div>
     );
@@ -33,13 +54,16 @@ class EditExpensePage extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    expense: state.expenses.find((expense) => expense.id === props.match.params.id)
+    expense: state.expenses.find((expense) => expense.id === props.match.params.id),
+    modal: state.modal.flag
   }
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
   startEditExpense: (expenseId, expense) => dispatch(startEditExpense(expenseId, expense)),
-  startRemoveExpense: (expenseId) => dispatch(startRemoveExpense(expenseId))
+  startRemoveExpense: (expenseId) => dispatch(startRemoveExpense(expenseId)),
+  setFlag: () => dispatch(setFlag()),
+  unSetFlag: () => dispatch(unSetFlag())
 });
 
 // const EditExpensePage = (props) => {
