@@ -1,7 +1,6 @@
-#Git Commands
+Expensify-React-App
+=================
 
-git init - Creates a new git repo
-git status - View the changes to your projects code
-git add - Add files to staging area
-git commit - Creates a new commit with files from staging area
-git log - View recent commits
+You can can sign in via Github :octocat: or Google. Start creating expenses with dates, amounts, and notes. Also delete your expenses when they are no longer relevant. Finally filter your expenses with a date using [react-dates](http://airbnb.io/react-dates) or by amount.
+
+Project can be found at: https://expensify-app-react-app.herokuapp.com
